@@ -6,14 +6,8 @@ import { data } from "../data/data";
 
 export function getPlanetsWithNoMoons(data) {
 	return data.planets
-		.filter(function (noMoons) {
-			if (!noMoons.moonsCount) {
-				return noMoons;
-			}
-		})
-		.map(function (planets) {
-			return planets.name;
-		});
+		.filter((noMoons) => !noMoons.moonsCount)
+		.map((planet) => planet.name);
 }
 
 // === TEST YOURSELF ===

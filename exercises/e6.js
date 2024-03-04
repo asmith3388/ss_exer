@@ -5,21 +5,9 @@ import { data } from "../data/data";
 // Return example: ['name1', 'name2', ... , 'nameN']
 
 export function getAsteroidsDiscoveredAfterYear(data, year) {
-	const asteroids = data.asteroids;
-	const givenYear = year;
-
-	if (givenYear > 2000) {
-		return givenYear;
-	}
-	return asteroids
-		.filter(function (aster) {
-			if (aster.discoveryYear > givenYear) {
-				return aster;
-			}
-		})
-		.map(function (asteroidNames) {
-			return asteroidNames.name;
-		});
+	return data.asteroids
+		.filter((givenYear) => givenYear.discoveryYear > year)
+		.map((asterName) => asterName.name);
 }
 
 // === TEST YOURSELF ===

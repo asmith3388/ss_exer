@@ -5,15 +5,21 @@
  */
 
 export function getGreatestDiscoveryYear(data) {
-	const asteroid = data.asteroids;
-	const aster = asteroid.reduce((a, num) => {
-		a[num.discoveryYear] = (a[num.discoveryYear] || 0) + 1;
-		return a;
-	});
-	const highestYear = Object.entries(aster)
-		.filter(([, occurrences]) => occurrences === 3)
-		.map(([num]) => Number(num));
-	return parseInt(highestYear);
+	const yearsCounts = data.asteroids.reduce((counts, asteroid) => {
+		const year = asteroid.discoveryYear;
+		counts[year] = (counts[year] || 0) + 1;
+		return counts;
+	}, {});
+	let maxYear = null;
+	let maxCount = 0;
+
+	for (const year in yearsCounts) {
+		if (yearsCounts[year] > maxCount) {
+			maxCount = yearsCounts[year];
+			maxYear = parseInt(year);
+		}
+	}
+	return maxYear;
 }
 
 // === TEST YOURSELF ===

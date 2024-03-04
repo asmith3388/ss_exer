@@ -5,21 +5,9 @@ import { data } from "../data/data";
 // Return example: ['name1', 'name2', ... , 'nameN']
 
 export function getPlanetsWithMassValue(data, number) {
-	const planets = data.planets;
-	const mass = number;
-
-	if (mass >= 3 && mass >= 7) {
-		return mass;
-	}
-	return planets
-		.filter(function (planetsMass) {
-			if (planetsMass.mass.massValue >= mass) {
-				return planetsMass;
-			}
-		})
-		.map(function (planetsNames) {
-			return planetsNames.name;
-		});
+	return data.planets
+		.filter((planet) => planet.mass.massValue >= number)
+		.map((planetName) => planetName.name);
 }
 
 // === TEST YOURSELF ===

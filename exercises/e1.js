@@ -5,10 +5,7 @@ import { data } from "../data/data";
 // Return example: ['name1', 'name2', ... , 'nameN']
 
 export function getPlanetNames(data) {
-	const planetNames = data.planets;
-	return planetNames.map(function (planets) {
-		return planets.name;
-	});
+	return data.planets.map((planet) => planet.name);
 }
 
 // === TEST YOURSELF ===
